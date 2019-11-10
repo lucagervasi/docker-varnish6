@@ -1,0 +1,11 @@
+[varnish-community-60lts]
+name=varnishcache_varnish60lts
+baseurl=https://packagecloud.io/varnishcache/varnish60lts/el/7/$basearch
+repo_gpgcheck=0
+gpgcheck=0
+enabled=1
+gpgkey=https://packagecloud.io/varnishcache/varnish60lts/gpgkey
+sslverify=1
+sslcacert=/etc/pki/tls/certs/ca-bundle.crt
+metadata_expire=300
+
