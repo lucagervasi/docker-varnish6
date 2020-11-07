@@ -1,2 +1,2 @@
 # docker-varnish5
-Varnish 5 on centos:7 image
+Varnish 6 on centos:7 image
