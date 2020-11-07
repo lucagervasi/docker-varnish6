@@ -1,7 +1,7 @@
+FROM centos:centos7 as builder
+
 ENV VARNISH=6.0.7-1.el7
 ENV VARNISH_MODULES=6.0-lts
-
-FROM centos:centos7 as builder
 
 ADD varnishcache6.repo /etc/yum.repos.d/varnishcache6.repo
 RUN yum -y install epel-release && \
@@ -18,6 +18,9 @@ RUN mkdir /git && cd /git && git clone -b ${VARNISH_MODULES} https://github.com/
 
 
 FROM centos:centos7
+ENV VARNISH=6.0.7-1.el7
+ENV VARNISH_MODULES=6.0-lts
+
 MAINTAINER Luca Gervasi <varnish6@ashetic.net>
 
 ADD varnishcache6.repo /etc/yum.repos.d/varnishcache6.repo
@@ -25,7 +28,7 @@ ADD start.sh /start.sh
 
 # Needed to satisfy jemalloc library
 RUN yum -y install epel-release && \
-    yum install -y varnish && \
+    yum install -y varnish-${VARNISH} && \
     yum clean all && \
     rm -rf /var/cache/yum && \
     chmod 755 /start.sh
